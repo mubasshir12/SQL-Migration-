@@ -1,0 +1,38 @@
+{
+  "optimized": {
+    "tableCount": 1,
+    "tables": [
+      "IF"
+    ],
+    "policies": 29,
+    "functions": 8,
+    "triggers": 1,
+    "events": 0,
+    "extensions": 1
+  },
+  "ceaznet": {
+    "tableCount": 15,
+    "tables": [
+      "IF",
+      "support_conversations",
+      "support_messages",
+      "news_api_keys",
+      "CREATE",
+      "for",
+      "broadcasts",
+      "broadcast_iterations",
+      "user_settings",
+      "gallery_items",
+      "vehicles",
+      "user_article_interactions",
+      "public_article_cache",
+      "public_news_articles",
+      "article_conversations"
+    ],
+    "policies": 76,
+    "functions": 33,
+    "triggers": 1,
+    "events": 1,
+    "extensions": 4
+  }
+}

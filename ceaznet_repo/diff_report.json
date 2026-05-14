@@ -1,0 +1,980 @@
+{
+  "t9": {
+    "tables": [
+      "public.conversations",
+      "public.article_conversations",
+      "public.public_article_cache",
+      "public.notes",
+      "public.dairy_items",
+      "public.dairy_entries",
+      "public.dairy_payments",
+      "public.gallery_items",
+      "public.user_molecules",
+      "public.finance_profiles",
+      "public.finance_transactions",
+      "public.vehicles",
+      "public.broadcasts",
+      "public.broadcast_iterations",
+      "public.support_conversations",
+      "public.support_messages",
+      "public.public_news_articles",
+      "public.update_news_logs",
+      "public.user_article_interactions",
+      "public.activity_logs",
+      "public.news_api_keys",
+      "public.api_key_audit_logs",
+      "public.news_system_config",
+      "public.profiles",
+      "public.user_settings",
+      "public.platform_settings"
+    ],
+    "functions": [
+      "increment_article_stat",
+      "get_function_stats",
+      "public.get_database_analytics",
+      "public.get_all_tables",
+      "public.admin_truncate_table",
+      "public.admin_reset_sequence",
+      "public.admin_drop_table",
+      "public.prune_activity_logs",
+      "public.log_table_activity",
+      "public.log_frontend_activity",
+      "public.attach_trigger_to_new_table",
+      "public.increment_news_key_calls",
+      "public.increment_news_key_failures",
+      "public.mark_news_key_used",
+      "public.mark_news_key_failed",
+      "public.log_api_key_audit",
+      "public.handle_new_user"
+    ],
+    "policies": [
+      {
+        "policy": "Users can view their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can insert their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can update their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can delete their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can upload their own voice conversations",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can view their own voice conversations",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can manage their own article conversations.",
+        "table": "public.article_conversations"
+      },
+      {
+        "policy": "Public article cache is viewable by everyone.",
+        "table": "public.public_article_cache"
+      },
+      {
+        "policy": "Authenticated users can insert new article content.",
+        "table": "public.public_article_cache"
+      },
+      {
+        "policy": "Users can manage their own notes.",
+        "table": "public.notes"
+      },
+      {
+        "policy": "Users can view their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can insert their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can update their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can delete their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can view their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can insert their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can update their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can delete their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can view their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can insert their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can update their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can delete their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can view their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can insert their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can update their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can delete their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can manage their own saved molecules.",
+        "table": "public.user_molecules"
+      },
+      {
+        "policy": "Users can manage their own finance profiles.",
+        "table": "public.finance_profiles"
+      },
+      {
+        "policy": "Users can manage their own transactions.",
+        "table": "public.finance_transactions"
+      },
+      {
+        "policy": "Users can manage their own vehicles.",
+        "table": "public.vehicles"
+      },
+      {
+        "policy": "Enable all for authenticated users",
+        "table": "public.broadcasts"
+      },
+      {
+        "policy": "Enable all for authenticated users",
+        "table": "public.broadcast_iterations"
+      },
+      {
+        "policy": "Users can view their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can create their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can delete their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can view messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can insert messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can update messages setting is_read",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can delete messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Public news articles are viewable by everyone.",
+        "table": "public.public_news_articles"
+      },
+      {
+        "policy": "Allow full access for service_role",
+        "table": "public.public_news_articles"
+      },
+      {
+        "policy": "Allow read access to everyone for news logs",
+        "table": "public.update_news_logs"
+      },
+      {
+        "policy": "Users can manage their own article interactions.",
+        "table": "public.user_article_interactions"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.activity_logs"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.news_api_keys"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.api_key_audit_logs"
+      },
+      {
+        "policy": "Allow read access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow update access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow insert access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow delete access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Public profiles are viewable by everyone.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can insert their own profile.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can update own profile.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can manage their own settings.",
+        "table": "public.user_settings"
+      },
+      {
+        "policy": "Allow public read access on platform_settings",
+        "table": "public.platform_settings"
+      },
+      {
+        "policy": "Allow authenticated admins full access on platform_settings",
+        "table": "public.platform_settings"
+      },
+      {
+        "policy": "Avatar images are publicly accessible.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can upload their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can update their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can delete their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Uploaded files are publicly accessible.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can upload their own files.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can delete their own files.",
+        "table": "storage.objects"
+      }
+    ],
+    "triggers": [
+      "on_auth_user_created"
+    ],
+    "extensions": [
+      "uuid-ossp",
+      "pgcrypto"
+    ],
+    "events": [
+      "auto_attach_activity_trigger"
+    ]
+  },
+  "r": {
+    "tables": [
+      "public.user_molecules",
+      "public.broadcasts",
+      "public.broadcast_iterations",
+      "public.support_conversations",
+      "public.support_messages",
+      "public.activity_logs",
+      "public.news_api_keys",
+      "public.api_key_audit_logs",
+      "public.news_system_config",
+      "public.notes",
+      "public.dairy_items",
+      "public.dairy_entries",
+      "public.dairy_payments",
+      "public.gallery_items",
+      "public.finance_profiles",
+      "public.finance_transactions",
+      "public.vehicles",
+      "public.public_news_articles",
+      "public.update_news_logs",
+      "public.user_article_interactions",
+      "public.conversations",
+      "public.article_conversations",
+      "public.public_article_cache",
+      "public.profiles",
+      "public.user_settings",
+      "public.platform_settings",
+      "public.article_processing_logs"
+    ],
+    "functions": [
+      "public.get_all_tables",
+      "public.admin_truncate_table",
+      "public.admin_reset_sequence",
+      "public.admin_drop_table",
+      "public.prune_activity_logs",
+      "public.log_table_activity",
+      "public.log_frontend_activity",
+      "public.attach_trigger_to_new_table",
+      "public.increment_news_key_calls",
+      "public.increment_news_key_failures",
+      "public.mark_news_key_used",
+      "public.mark_news_key_failed",
+      "public.log_api_key_audit",
+      "public.get_database_analytics",
+      "increment_article_stat",
+      "get_function_stats",
+      "public.handle_new_user",
+      "mark_news_key_used",
+      "mark_news_key_failed",
+      "log_api_key_audit",
+      "log_skipped_article",
+      "attach_trigger_to_new_table",
+      "increment_news_key_calls",
+      "increment_news_key_failures",
+      "get_all_tables",
+      "get_database_analytics",
+      "admin_drop_table"
+    ],
+    "policies": [
+      {
+        "policy": "Users can manage their own saved molecules.",
+        "table": "public.user_molecules"
+      },
+      {
+        "policy": "Enable all for authenticated users",
+        "table": "public.broadcasts"
+      },
+      {
+        "policy": "Enable all for authenticated users",
+        "table": "public.broadcast_iterations"
+      },
+      {
+        "policy": "Users can view their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can create their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can delete their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can view messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can insert messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can update messages setting is_read",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can delete messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.activity_logs"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.news_api_keys"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.api_key_audit_logs"
+      },
+      {
+        "policy": "Allow read access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow update access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow insert access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow delete access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Users can delete their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can delete messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can manage their own notes.",
+        "table": "public.notes"
+      },
+      {
+        "policy": "Users can view their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can insert their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can update their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can delete their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can view their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can insert their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can update their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can delete their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can view their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can insert their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can update their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can delete their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can view their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can insert their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can update their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can delete their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can manage their own saved molecules.",
+        "table": "public.user_molecules"
+      },
+      {
+        "policy": "Users can update messages setting is_read",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can manage their own finance profiles.",
+        "table": "public.finance_profiles"
+      },
+      {
+        "policy": "Users can manage their own transactions.",
+        "table": "public.finance_transactions"
+      },
+      {
+        "policy": "Users can manage their own vehicles.",
+        "table": "public.vehicles"
+      },
+      {
+        "policy": "Users can view their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can create their own support conversations",
+        "table": "public.support_conversations"
+      },
+      {
+        "policy": "Users can view messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Users can insert messages in their conversations",
+        "table": "public.support_messages"
+      },
+      {
+        "policy": "Public news articles are viewable by everyone.",
+        "table": "public.public_news_articles"
+      },
+      {
+        "policy": "Allow full access for service_role",
+        "table": "public.public_news_articles"
+      },
+      {
+        "policy": "Allow read access to everyone for news logs",
+        "table": "public.update_news_logs"
+      },
+      {
+        "policy": "Users can manage their own article interactions.",
+        "table": "public.user_article_interactions"
+      },
+      {
+        "policy": "Users can view their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can insert their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can update their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can delete their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can upload their own voice conversations",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can view their own voice conversations",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can manage their own article conversations.",
+        "table": "public.article_conversations"
+      },
+      {
+        "policy": "Public article cache is viewable by everyone.",
+        "table": "public.public_article_cache"
+      },
+      {
+        "policy": "Authenticated users can insert new article content.",
+        "table": "public.public_article_cache"
+      },
+      {
+        "policy": "Public profiles are viewable by everyone.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can insert their own profile.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can update own profile.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can manage their own settings.",
+        "table": "public.user_settings"
+      },
+      {
+        "policy": "Allow public read access on platform_settings",
+        "table": "public.platform_settings"
+      },
+      {
+        "policy": "Allow authenticated admins full access on platform_settings",
+        "table": "public.platform_settings"
+      },
+      {
+        "policy": "Avatar images are publicly accessible.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can upload their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can update their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can delete their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Uploaded files are publicly accessible.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can upload their own files.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can delete their own files.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can view their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can insert their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can update their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Users can delete their own conversations",
+        "table": "public.conversations"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.api_key_audit_logs"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.article_processing_logs"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.news_api_keys"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.news_api_keys"
+      },
+      {
+        "policy": "Allow read access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow update access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow insert access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow delete access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow read access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow update access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow insert access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow delete access to config",
+        "table": "public.news_system_config"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.news_api_keys"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.api_key_audit_logs"
+      },
+      {
+        "policy": "Enable all for authenticated users",
+        "table": "public.broadcasts"
+      },
+      {
+        "policy": "Enable all for authenticated users",
+        "table": "public.broadcast_iterations"
+      },
+      {
+        "policy": "Users can manage their own settings.",
+        "table": "public.user_settings"
+      },
+      {
+        "policy": "Public profiles are viewable by everyone.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can insert their own profile.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can update own profile.",
+        "table": "public.profiles"
+      },
+      {
+        "policy": "Users can manage their own settings.",
+        "table": "public.user_settings"
+      },
+      {
+        "policy": "Avatar images are publicly accessible.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can upload their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can update their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can delete their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Allow full access to authenticated users",
+        "table": "public.news_api_keys"
+      },
+      {
+        "policy": "Users can view their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can insert their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can update their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can delete their own gallery items",
+        "table": "public.gallery_items"
+      },
+      {
+        "policy": "Users can view their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can insert their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can update their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can delete their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can view their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can insert their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can update their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can delete their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can view their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can insert their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can update their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can delete their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can manage their own dairy items",
+        "table": "public.dairy_items"
+      },
+      {
+        "policy": "Users can manage their own dairy entries",
+        "table": "public.dairy_entries"
+      },
+      {
+        "policy": "Users can manage their own dairy payments",
+        "table": "public.dairy_payments"
+      },
+      {
+        "policy": "Users can upload their own voice conversations",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can view their own voice conversations",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can manage their own vehicles.",
+        "table": "public.vehicles"
+      },
+      {
+        "policy": "Users can manage their own finance profiles.",
+        "table": "public.finance_profiles"
+      },
+      {
+        "policy": "Users can manage their own transactions.",
+        "table": "public.finance_transactions"
+      },
+      {
+        "policy": "Users can manage their own transactions",
+        "table": "public.finance_transactions"
+      },
+      {
+        "policy": "Users can manage their own notes.",
+        "table": "public.notes"
+      },
+      {
+        "policy": "Users can manage their own article interactions.",
+        "table": "public.user_article_interactions"
+      },
+      {
+        "policy": "Allow read access to everyone for news logs",
+        "table": "public.update_news_logs"
+      },
+      {
+        "policy": "Public article cache is viewable by everyone.",
+        "table": "public.public_article_cache"
+      },
+      {
+        "policy": "Authenticated users can insert new article content.",
+        "table": "public.public_article_cache"
+      },
+      {
+        "policy": "Public news articles are viewable by everyone.",
+        "table": "public.public_news_articles"
+      },
+      {
+        "policy": "Allow full access for service_role",
+        "table": "public.public_news_articles"
+      },
+      {
+        "policy": "Users can manage their own article conversations.",
+        "table": "public.article_conversations"
+      },
+      {
+        "policy": "Public news articles are viewable by everyone.",
+        "table": "public.public_news_articles"
+      },
+      {
+        "policy": "Allow full access for service_role",
+        "table": "public.public_news_articles"
+      },
+      {
+        "policy": "Users can manage their own settings.",
+        "table": "public.user_settings"
+      },
+      {
+        "policy": "Uploaded files are publicly accessible.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can upload their own files.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can delete their own files.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Avatar images are publicly accessible.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can upload their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can update their own avatar.",
+        "table": "storage.objects"
+      },
+      {
+        "policy": "Users can delete their own avatar.",
+        "table": "storage.objects"
+      }
+    ],
+    "triggers": [
+      "on_auth_user_created"
+    ],
+    "extensions": [
+      "pgcrypto",
+      "uuid-ossp"
+    ],
+    "events": [
+      "auto_attach_activity_trigger",
+      "auto_add_activity_trigger"
+    ]
+  },
+  "missingTables": [
+    "public.article_processing_logs"
+  ],
+  "missingFunctions": [
+    "mark_news_key_used",
+    "mark_news_key_failed",
+    "log_api_key_audit",
+    "log_skipped_article",
+    "attach_trigger_to_new_table",
+    "increment_news_key_calls",
+    "increment_news_key_failures",
+    "get_all_tables",
+    "get_database_analytics",
+    "admin_drop_table"
+  ],
+  "missingExtensions": []
+}

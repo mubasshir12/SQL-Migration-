@@ -1,0 +1,5 @@
+{
+  "name": "SQL Migration Task Manager v6",
+  "description": "Manage and track SQL queries and edge functions during database migration.",
+  "requestFramePermissions": []
+}

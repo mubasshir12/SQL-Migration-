@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Prism Overrides for Light Mode visibility when using prism-tomorrow as base */
+html:not(.dark) code[class*="language-"],
+html:not(.dark) pre[class*="language-"] {
+    color: #27272a; /* text-slate-800 */
+    text-shadow: none;
+    background: transparent;
+}
+
+html:not(.dark) .token.punctuation {
+    color: #71717a; /* text-slate-500 */
+}
+
+html:not(.dark) .token.keyword {
+    color: #2563eb; /* blue-600 */
+    font-weight: 600;
+}
+
+html:not(.dark) .token.operator,
+html:not(.dark) .token.entity,
+html:not(.dark) .token.url,
+html:not(.dark) .language-css .token.string,
+html:not(.dark) .style .token.string {
+    color: #d97706; /* amber-600 */
+}
+
+html:not(.dark) .token.string,
+html:not(.dark) .token.char,
+html:not(.dark) .token.attr-value,
+html:not(.dark) .token.regex,
+html:not(.dark) .token.variable {
+    color: #16a34a; /* emerald-600 */
+}
+
+html:not(.dark) .token.comment,
+html:not(.dark) .token.prolog,
+html:not(.dark) .token.doctype,
+html:not(.dark) .token.cdata {
+    color: #94a3b8; /* slate-400 */
+    font-style: italic;
+}
+
+html:not(.dark) .token.function,
+html:not(.dark) .token.class-name {
+    color: #7c3aed; /* violet-600 */
+}
+
+html:not(.dark) .token.property,
+html:not(.dark) .token.tag,
+html:not(.dark) .token.boolean,
+html:not(.dark) .token.number,
+html:not(.dark) .token.constant,
+html:not(.dark) .token.symbol,
+html:not(.dark) .token.deleted {
+    color: #ea580c; /* orange-600 */
+}

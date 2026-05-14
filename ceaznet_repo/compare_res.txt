@@ -1,0 +1,35 @@
+P1 Tables: 28
+create, for, public.activity_logs, public.api_key_audit_logs, public.article_conversations, public.article_processing_logs, public.broadcast_iterations, public.broadcasts, public.conversations, public.dairy_entries, public.dairy_items, public.dairy_payments, public.finance_profiles, public.finance_transactions, public.gallery_items, public.news_api_keys, public.news_system_config, public.notes, public.profiles, public.public_article_cache, public.public_news_articles, public.support_conversations, public.support_messages, public.update_news_logs, public.user_article_interactions, public.user_molecules, public.user_settings, public.vehicles
+P2 Tables: 26
+public.activity_logs, public.api_key_audit_logs, public.article_conversations, public.broadcast_iterations, public.broadcasts, public.conversations, public.dairy_entries, public.dairy_items, public.dairy_payments, public.finance_profiles, public.finance_transactions, public.gallery_items, public.news_api_keys, public.news_system_config, public.notes, public.platform_settings, public.profiles, public.public_article_cache, public.public_news_articles, public.support_conversations, public.support_messages, public.update_news_logs, public.user_article_interactions, public.user_molecules, public.user_settings, public.vehicles
+
+Tables in P1 but not in P2: [ 'create', 'for', 'public.article_processing_logs' ]
+Tables in P2 but not in P1: [ 'public.platform_settings' ]
+
+P1 Functions: 20
+admin_drop_table, attach_trigger_to_new_table, get_all_tables, get_database_analytics, get_function_stats, increment_article_stat, increment_news_key_calls, increment_news_key_failures, log_api_key_audit, log_skipped_article, mark_news_key_failed, mark_news_key_used, public.admin_reset_sequence, public.admin_truncate_table, public.attach_trigger_to_new_table, public.get_all_tables, public.handle_new_user, public.log_frontend_activity, public.log_table_activity, public.prune_activity_logs
+
+P2 Functions: 17
+get_function_stats, increment_article_stat, public.admin_drop_table, public.admin_reset_sequence, public.admin_truncate_table, public.attach_trigger_to_new_table, public.get_all_tables, public.get_database_analytics, public.handle_new_user, public.increment_news_key_calls, public.increment_news_key_failures, public.log_api_key_audit, public.log_frontend_activity, public.log_table_activity, public.mark_news_key_failed, public.mark_news_key_used, public.prune_activity_logs
+
+Functions in P1 but not in P2: [
+  'admin_drop_table',
+  'attach_trigger_to_new_table',
+  'get_all_tables',
+  'get_database_analytics',
+  'increment_news_key_calls',
+  'increment_news_key_failures',
+  'log_api_key_audit',
+  'log_skipped_article',
+  'mark_news_key_failed',
+  'mark_news_key_used'
+]
+Functions in P2 but not in P1: [
+  'public.admin_drop_table',
+  'public.get_database_analytics',
+  'public.increment_news_key_calls',
+  'public.increment_news_key_failures',
+  'public.log_api_key_audit',
+  'public.mark_news_key_failed',
+  'public.mark_news_key_used'
+]
