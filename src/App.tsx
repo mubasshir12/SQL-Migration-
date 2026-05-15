@@ -648,29 +648,59 @@ export default function App() {
       }
     };
 
-    fetchInitialData();
+    const setupRealtime = () => {
+      supabase.getChannels().forEach(c => {
+         if (c.topic === 'realtime:schema-db-changes') {
+            supabase.removeChannel(c);
+         }
+      });
 
-    const channel = supabase
-      .channel('schema-db-changes')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'tasks' },
-        () => {
-          fetchInitialData();
-        }
-      )
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'projects' },
-        () => {
-          fetchInitialData();
-        }
-      )
-      .subscribe();
+      const channel = supabase
+        .channel('schema-db-changes')
+        .on(
+          'postgres_changes',
+          { event: '*', schema: 'public', table: 'tasks' },
+          () => {
+            if (isMounted) fetchInitialData();
+          }
+        )
+        .on(
+          'postgres_changes',
+          { event: '*', schema: 'public', table: 'projects' },
+          () => {
+            if (isMounted) fetchInitialData();
+          }
+        )
+        .subscribe((status, err) => {
+           if (status === 'SUBSCRIBED') {
+             console.log('Realtime connected successfully.');
+           } else if (status === 'CHANNEL_ERROR') {
+             console.error('Realtime channel error', err);
+           } else if (status === 'TIMED_OUT') {
+             console.warn('Realtime channel timed out');
+           } else if (status === 'CLOSED') {
+             console.log('Realtime channel closed');
+           }
+        });
+
+      return channel;
+    };
+
+    fetchInitialData();
+    const currentChannel = setupRealtime();
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        console.log('Tab became visible, refetching data to ensure freshness...');
+        if (isMounted) fetchInitialData();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       isMounted = false;
-      supabase.removeChannel(channel);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      if (currentChannel) supabase.removeChannel(currentChannel);
     };
   }, []);
 
